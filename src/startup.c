@@ -16,12 +16,13 @@ const uint32_t vector_table[] = {
 void Reset_Handler(void)
 {
     /* Copy .data from the flash (_sidata) to the RAM (_sdata ... _edata) */
-    uint32_t *src = &_sidata;
-    uint32_t *dest = &_sdata;
-    uint32_t *bss_ptr = &_sbss;
+    uint32_t *src = &_sidata;       /* _sidata -> Starting address of the initial data in the FLASH */
     
-    while(dest < &_edata)
-    {
+    uint32_t *dest = &_sdata;        /* _sdata -> Starting address of the data in the RAM */
+    uint32_t *bss_ptr = &_sbss;    
+    
+    while(dest < &_edata)            /* _edata -> Ending address of the data in the RAM */
+     {
         *dest = *src;
         dest++;
         src++;
