@@ -17,6 +17,7 @@ int main(void)
     (void)RCC->AHB2ENR;
 
     /* Clear and Set the MODER for pin 13 */
+    // GPIOG->MODER |= GPIO_MODER_MODE13_0;
     GPIOG->MODER = (GPIOG->MODER & ~GPIO_MODER_MODE13_Msk) | GPIO_MODER_MODE13_0;
 
     while (1) {
